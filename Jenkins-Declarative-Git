@@ -13,8 +13,9 @@ pipeline{
     stage("Maven buld"){
             steps{
                 
-                sh "mvn clean package"
-		sh "mv /root/mvn/subbu/root/*.war /root/mvn/subbu/root/myweb.war"
+                sh "cd /root/mvn/subbu"
+		sh "mvn clean package"
+		
                 
                 
             }
