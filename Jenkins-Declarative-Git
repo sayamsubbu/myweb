@@ -10,11 +10,20 @@ pipeline{
                 
             }
         }
-     stage("Maven buld"){
+    stage("Maven buld"){
             steps{
                 
                 sh "mvn clean package"
+                sh "/root/mvn/subbu/*.war /root/mvn/subbu/myweb.war"
                 
+            }
+        }
+	stage("Deploy"){
+            steps{
+                
+                sshagent(['ec2-user']) {
+                     sh 'ssh -o StrictHostKeyChecking=no /root/mvn/subbu/myweb.war ec2-user@172.31.85.223:/root/tomcat/webapps'
+                 }
                 
             }
         }
