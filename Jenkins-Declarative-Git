@@ -14,7 +14,7 @@ pipeline{
             steps{
                 
                 sh "mvn clean package"
-                sh "/root/mvn/subbu/*.war /root/mvn/subbu/myweb.war"
+                sh "mv /root/mvn/subbu/*.war /root/mvn/subbu/myweb.war"
                 
             }
         }
