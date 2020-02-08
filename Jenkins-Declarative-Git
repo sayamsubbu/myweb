@@ -6,15 +6,14 @@ pipeline{
     stages{
         stage("Git checkout"){
             steps{
-                
-                
+               git credentialsId: 'gith', url: 'https://github.com/sayamsubbu/myweb/'
                 
             }
         }
      stage("Maven buld"){
             steps{
                 
-                echo "mvn clean package"
+                sh "mvn clean package"
                 
             }
         }
