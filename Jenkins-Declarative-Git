@@ -14,13 +14,21 @@ pipeline{
             steps{
                 
                 sh "cd /root/mvn/subbu"
-		sh "mvn clean package"
+		
 		
                 
                 
             }
         }
-	
+    stage("Deploy"){
+            steps{
+                
+                sshagent(['ec2-user']) {
+                     sh 'ssh -o StrictHostKeyChecking=no /root/mvn/subbu/myweb.war ec2-user@172.31.85.223:/root/tomcat/webapps'
+                 }
+                
+            }
+        }
      
     }
 }
